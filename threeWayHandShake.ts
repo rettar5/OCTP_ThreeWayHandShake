@@ -45,7 +45,7 @@ export class ThreeWayHandShake {
    * @returns {boolean}
    */
   static isValidSynCommand(tweetData: OdnTweetData): boolean {
-    return tweetData.isReplyToMe() && tweetData.command.match(/^(syn)$/gi) ? true : false;
+    return false === tweetData.isRetweet && tweetData.isReplyToMe() && tweetData.command.match(/^(syn)$/gi) ? true : false;
   }
 
   /**
@@ -55,6 +55,6 @@ export class ThreeWayHandShake {
    * @returns {boolean}
    */
   static isValidSynAckCommand(tweetData: OdnTweetData): boolean {
-    return tweetData.isReplyToMe() && tweetData.text.match(/syn.?ack$/gi) ? true : false;
+    return false === tweetData.isRetweet && tweetData.isReplyToMe() && tweetData.text.match(/syn.?ack$/gi) ? true : false;
   }
 }
